@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Triply — sayohatingiz shu yerdan boshlanadi',
   description: 'Tur paketlarini toping, solishtiring va ishonch bilan bron qiling.',
-  metadataBase: new URL('https://triply-travel.balmy-gnome-1912.chatgpt.site'),
+  metadataBase: new URL('https://triply-travel.exon-obunalar.chatgpt.site'),
   openGraph: {
     title: 'Triply — sayohatingiz shu yerdan boshlanadi',
     description: 'Tur paketlarini toping, solishtiring va ishonch bilan bron qiling.',
