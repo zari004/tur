@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   AlertTriangle, BadgeCheck, Ban, BarChart3, Bell, Building2, CalendarCheck,
@@ -8,9 +8,11 @@ import {
 } from 'lucide-react';
 import '../app/globals.css';
 import './admin.css';
+import { getCurrentProfile, getDashboardCounts, listSellers, setSellerStatus } from '../lib/database';
+import { isDatabaseConfigured } from '../lib/supabase';
 
 type SellerStatus = 'Tasdiqlangan' | 'Kutilmoqda' | 'Bloklangan';
-type Seller = { id:number; company:string; owner:string; phone:string; tours:number; sales:string; rating:string; status:SellerStatus };
+type Seller = { id:string | number; company:string; owner:string; phone:string; tours:number; sales:string; rating:string; status:SellerStatus };
 
 const initialSellers: Seller[] = [
   { id:1, company:'Atlas Travel', owner:'Aziz Karimov', phone:'+998 90 123 45 67', tours:12, sales:'286.4 mln', rating:'4.9', status:'Tasdiqlangan' },
@@ -34,13 +36,34 @@ function AdminPanel() {
   const [status, setStatus] = useState<'Barchasi' | SellerStatus>('Barchasi');
   const [toast, setToast] = useState('');
   const [detail, setDetail] = useState<Seller | null>(null);
+  const [counts, setCounts] = useState({ users: 0, sellers: 0, tours: 0, bookings: 0 });
+
+  useEffect(() => {
+    if (!isDatabaseConfigured) return;
+    void (async () => {
+      try {
+        const profile = await getCurrentProfile();
+        if (!profile) { window.location.href = '/auth/?next=/admin/'; return; }
+        if (profile.role !== 'admin') { window.location.href = '/'; return; }
+        const [rows, totals] = await Promise.all([listSellers(), getDashboardCounts()]);
+        if (rows) setSellers(rows.map(row => ({ id: row.id, company: row.company_name, owner: row.owner_name,
+          phone: row.phone ?? '—', tours: 0, sales: '—', rating: String(row.rating),
+          status: row.status === 'approved' ? 'Tasdiqlangan' : row.status === 'blocked' ? 'Bloklangan' : 'Kutilmoqda' })));
+        if (totals) setCounts(totals);
+      } catch (error) { setToast(error instanceof Error ? error.message : 'Admin ma’lumotlari yuklanmadi.'); }
+    })();
+  }, []);
 
   const filtered = useMemo(() => sellers.filter((seller) =>
     `${seller.company} ${seller.owner} ${seller.phone}`.toLowerCase().includes(query.toLowerCase()) &&
     (status === 'Barchasi' || seller.status === status)
   ), [sellers, query, status]);
 
-  function updateSeller(id:number, next:SellerStatus) {
+  async function updateSeller(id:string | number, next:SellerStatus) {
+    if (isDatabaseConfigured) {
+      try { await setSellerStatus(String(id), next === 'Tasdiqlangan' ? 'approved' : next === 'Bloklangan' ? 'blocked' : 'pending'); }
+      catch (error) { setToast(error instanceof Error ? error.message : 'Holat yangilanmadi.'); return; }
+    }
     setSellers((current) => current.map((seller) => seller.id === id ? { ...seller, status:next } : seller));
     setDetail((current) => current?.id === id ? { ...current, status:next } : current);
     setToast(next === 'Tasdiqlangan' ? 'Seller muvaffaqiyatli tasdiqlandi.' : next === 'Bloklangan' ? 'Seller faoliyati bloklandi.' : 'Seller holati yangilandi.');
@@ -73,7 +96,7 @@ function AdminPanel() {
 
     <main className="admin-main">
       <header className="admin-header"><button className="admin-menu"><Menu /></button><div><span>Administrator paneli</span><strong>Platforma nazorati</strong></div><label><Search /><input placeholder="Umumiy qidiruv..." /></label><button className="admin-bell"><Bell /><i /></button><button className="admin-user"><span>ZA</span><div><b>Zarnigor</b><small>Super administrator</small></div><ChevronDown /></button></header>
-      <div className="admin-content">
+      <div className="admin-content" data-users={counts.users} data-tours={counts.tours}>
         {toast && <div className="admin-toast"><Check />{toast}</div>}
         <section className="admin-heading"><div><p>GO2TRIP BOSHQARUVI</p><h1>{section === 'sellers' ? 'Sellerlar nazorati' : 'Umumiy ko‘rinish'}</h1><span>{section === 'sellers' ? 'Hamkorlarni tekshiring, tasdiqlang va boshqaring.' : 'Platformadagi eng muhim ko‘rsatkichlar va vazifalar.'}</span></div><div className="date-chip"><Clock3 /> 5-oktabr, 2026</div></section>
 
