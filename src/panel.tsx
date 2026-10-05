@@ -63,7 +63,7 @@ function PartnerPanel() {
   return (
     <div className="partner-shell">
       <aside className="partner-sidebar">
-        <a className="panel-brand" href="/"><span><Plane /></span>triply</a>
+        <a className="panel-brand" href="/"><span><Plane /></span>go2trip</a>
         <div className="partner-label">HAMKOR PANELI</div>
         <nav>
           <a className="selected" href="#overview"><LayoutDashboard /> Umumiy</a>

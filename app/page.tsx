@@ -40,7 +40,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <div className="shell header-inner">
-          <a className="brand" href="#top" aria-label="Triply bosh sahifa"><span className="brand-mark"><Plane aria-hidden="true" /></span><span>triply</span></a>
+          <a className="brand" href="#top" aria-label="Go2Trip bosh sahifa"><span className="brand-mark"><Plane aria-hidden="true" /></span><span>go2trip</span></a>
           <nav className="desktop-nav" aria-label="Asosiy navigatsiya"><a href="#tours">Turlar</a><a href="#destinations">Yo‘nalishlar</a><a href="#advantages">Afzalliklar</a><a href="#help">Yordam</a></nav>
           <div className="header-actions">
             <button className="language-button" type="button">UZ <ChevronDown /></button>
@@ -55,7 +55,7 @@ export default function Home() {
         <div className="hero-glow hero-glow-one" /><div className="hero-glow hero-glow-two" />
         <div className="shell hero-content">
           <div className="eyebrow"><Sparkles /> Sayohatning oson yo‘li</div>
-          <h1>Dunyoni <span>Triply</span> bilan kashf eting</h1>
+          <h1>Dunyoni <span>Go2Trip</span> bilan kashf eting</h1>
           <p>Eng yaxshi tur paketlarini bir joyda toping, solishtiring va ishonch bilan bron qiling.</p>
           <div className="search-panel" role="search">
             <div className="search-tabs" aria-label="Qidiruv turi">
@@ -103,9 +103,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section shell" id="advantages"><div className="benefit-banner"><div><span className="section-kicker">NIMA UCHUN TRIPLY?</span><h2>Sayohatingiz uchun bitta ishonchli joy</h2></div><div className="benefit-list"><div><span><ShieldCheck /></span><p><strong>Xavfsiz bron</strong><small>Tekshirilgan seller va himoyalangan to‘lov</small></p></div><div><span><Sparkles /></span><p><strong>Eng yaxshi narx</strong><small>Takliflarni bir joyda solishtiring</small></p></div><div><span><Headphones /></span><p><strong>Doim yoningizda</strong><small>Safargacha va safar davomida yordam</small></p></div></div></div></section>
+      <section className="section shell" id="advantages"><div className="benefit-banner"><div><span className="section-kicker">NIMA UCHUN GO2TRIP?</span><h2>Sayohatingiz uchun bitta ishonchli joy</h2></div><div className="benefit-list"><div><span><ShieldCheck /></span><p><strong>Xavfsiz bron</strong><small>Tekshirilgan seller va himoyalangan to‘lov</small></p></div><div><span><Sparkles /></span><p><strong>Eng yaxshi narx</strong><small>Takliflarni bir joyda solishtiring</small></p></div><div><span><Headphones /></span><p><strong>Doim yoningizda</strong><small>Safargacha va safar davomida yordam</small></p></div></div></div></section>
 
-      <footer id="help"><div className="shell footer-inner"><div><a className="brand footer-brand" href="#top"><span className="brand-mark"><Plane /></span><span>triply</span></a><p>Safaringiz shu yerdan boshlanadi.</p></div><div><strong>Triply</strong><a href="#destinations">Yo‘nalishlar</a><a href="#tours">Tur paketlari</a></div><div><strong>Yordam</strong><a href="#help">Savol-javoblar</a><a href="#help">Bog‘lanish</a></div><div><strong>Aloqa</strong><span>+998 71 200 00 00</span><span>hello@triply.uz</span></div></div><div className="shell footer-bottom"><span>© 2026 Triply. Barcha huquqlar himoyalangan.</span><span>O‘zbekiston · UZS</span></div></footer>
+      <footer id="help"><div className="shell footer-inner"><div><a className="brand footer-brand" href="#top"><span className="brand-mark"><Plane /></span><span>go2trip</span></a><p>Safaringiz shu yerdan boshlanadi.</p></div><div><strong>Go2Trip</strong><a href="#destinations">Yo‘nalishlar</a><a href="#tours">Tur paketlari</a></div><div><strong>Yordam</strong><a href="#help">Savol-javoblar</a><a href="#help">Bog‘lanish</a></div><div><strong>Aloqa</strong><span>+998 71 200 00 00</span><span>hello@go2trip.uz</span></div></div><div className="shell footer-bottom"><span>© 2026 Go2Trip. Barcha huquqlar himoyalangan.</span><span>O‘zbekiston · UZS</span></div></footer>
     </main>
   );
 }

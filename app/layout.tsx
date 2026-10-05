@@ -13,17 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Triply — sayohatingiz shu yerdan boshlanadi',
+  title: 'Go2Trip — sayohatingiz shu yerdan boshlanadi',
   description: 'Tur paketlarini toping, solishtiring va ishonch bilan bron qiling.',
-  metadataBase: new URL('https://triply-travel.exon-obunalar.chatgpt.site'),
+  metadataBase: new URL('https://www.go2trip.uz'),
   openGraph: {
-    title: 'Triply — sayohatingiz shu yerdan boshlanadi',
+    title: 'Go2Trip — sayohatingiz shu yerdan boshlanadi',
     description: 'Tur paketlarini toping, solishtiring va ishonch bilan bron qiling.',
     images: ['/og.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Triply — sayohatingiz shu yerdan boshlanadi',
+    title: 'Go2Trip — sayohatingiz shu yerdan boshlanadi',
     description: 'Tur paketlarini toping, solishtiring va ishonch bilan bron qiling.',
     images: ['/og.png'],
   },
