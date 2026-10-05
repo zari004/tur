@@ -45,7 +45,7 @@ export default function Home() {
           <div className="header-actions">
             <button className="language-button" type="button">UZ <ChevronDown /></button>
             <button className="icon-button" type="button" aria-label="Xabarnomalar"><Bell /></button>
-            <Button className="login-button"><CircleUserRound /> Kirish</Button>
+            <Button className="login-button" onClick={() => { window.location.href = '/panel/'; }}><CircleUserRound /> Hamkor paneli</Button>
             <button className="mobile-menu" type="button" aria-label="Menyuni ochish"><Menu /></button>
           </div>
         </div>
